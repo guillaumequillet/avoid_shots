@@ -35,7 +35,7 @@ class Ennemy
 
   def draw
     # ennemy drawing
-    Gosu::draw_rect(@x - @@size / 2, @y - @@size / 2, @@size, @@size, Gosu::Color::RED)
+    Gosu.draw_rect(@x - @@size / 2, @y - @@size / 2, @@size, @@size, Gosu::Color::RED)
 
     # shots drawing
     @shots.each {|shot| shot.draw}
@@ -65,7 +65,7 @@ class Shot
   end
 
   def draw
-    Gosu::draw_rect(@x - @size / 2, @y - @size / 2, @size, @size, Gosu::Color::WHITE)
+    Gosu.draw_rect(@x - @size / 2, @y - @size / 2, @size, @size, Gosu::Color::WHITE)
   end
 end
 
@@ -152,7 +152,7 @@ class Window < Gosu::Window
     @ennemies.each_value {|ennemy| ennemy.draw}
 
     # on dessine le héros (j'ai centré le rectangle sur sa position)
-    Gosu::draw_rect(@hero_x - @hero_size / 2, @hero_y - @hero_size / 2, @hero_size, @hero_size, Gosu::Color::GREEN)
+    Gosu.draw_rect(@hero_x - @hero_size / 2, @hero_y - @hero_size / 2, @hero_size, @hero_size, Gosu::Color::GREEN)
   end
 end
 
