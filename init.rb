@@ -1,7 +1,7 @@
 require 'gosu'
 
 class Ennemy
-  @@size = 16
+  SIZE = 16
   def initialize(window, x, y)
     @window = window
     @x, @y = x, y
@@ -10,10 +10,6 @@ class Ennemy
     # sera utilisée pour tirer des missiles
     @max_cooldown = 20
     @cooldown = @max_cooldown 
-  end
-
-  def self.size
-    @@size
   end
 
   def update(hero_x, hero_y)
@@ -35,7 +31,7 @@ class Ennemy
 
   def draw
     # ennemy drawing
-    Gosu.draw_rect(@x - @@size / 2, @y - @@size / 2, @@size, @@size, Gosu::Color::RED)
+    Gosu.draw_rect(@x - SIZE / 2, @y - SIZE / 2, SIZE, SIZE, Gosu::Color::RED)
 
     # shots drawing
     @shots.each {|shot| shot.draw}
@@ -97,10 +93,10 @@ class Window < Gosu::Window
 
   def add_ennemy
     loop do
-      x = Gosu.random(0, self.width / Ennemy.size).floor
-      y = Gosu.random(0, self.height / Ennemy.size).floor
+      x = Gosu.random(0, self.width / Ennemy::SIZE).floor
+      y = Gosu.random(0, self.height / Ennemy::SIZE).floor
       unless @ennemies.keys.include?([x, y])
-        @ennemies[[x, y]] = Ennemy.new(self, x * Ennemy.size, y * Ennemy.size)
+        @ennemies[[x, y]] = Ennemy.new(self, x * Ennemy::SIZE, y * Ennemy::SIZE)
         break
       end
     end
